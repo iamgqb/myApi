@@ -14,14 +14,16 @@
 
     var map = bezier(0.42, 0, 0.58, 1.0) //直接传点的x y就行了
     
-    //贝塞尔曲线api，返回的是保存了100个点数组，偶数下标存了X,奇数下标存了Y
+    //贝塞尔曲线api，返回的是保存了100个点数组
     function bezier(x1, y1, x2, y2){
         var map = [];
         //100个点
         for (var i=0; i<101; i++){
             var t = i/100;
-            map[2*i]   = 3*x1*t*(1-t)*(1-t)+3*x2*t*t*(1-t)+t*t*t;// save X
-            map[2*i+1] = 3*y1*t*(1-t)*(1-t)+3*y2*t*t*(1-t)+t*t*t;// save Y
+            map[i] = {
+                x : 3*x1*t*(1-t)*(1-t)+3*x2*t*t*(1-t)+t*t*t,// save X
+                y : 3*y1*t*(1-t)*(1-t)+3*y2*t*t*(1-t)+t*t*t// save Y
+            }
         }
         return map;
     }
@@ -29,7 +31,7 @@
     //开始绘画
     ctx.beginPath();
     for (var i=0; i<101; i++){
-        ctx.lineTo(map[2*i]*500, map[2*i+1]*500);
+        ctx.lineTo(map[i].x*500, map[i].y*500);
     }
     ctx.stroke();
     </script>
