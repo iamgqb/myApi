@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add AND remove --- Class</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <p id="id" class="  red red
+    red ">这是一段文字，class 用颜色和背景来表示</p>
+    <button onclick="test1()">add color red</button>
+    <button onclick="test2()">add bg blue</button>
+    <button onclick="test3()">remove color red</button>
+    <button onclick="test4()">remove bg blue</button>
+
+    <script src="api-add-remove-Class.js"></script>
+    <script>
+        var ele = document.getElementById('id');
+        function test1(){
+            addClass(ele, "red")
+        }
+        function test2(){
+            addClass(ele, "blue")
+        }
+        function test3(){
+            removeClass(ele, "red")
+        }
+        function test4(){
+            removeClass(ele, "blue")
+        }
+    </script>
+</body>
+</html>
