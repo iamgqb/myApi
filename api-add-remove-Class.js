@@ -1,3 +1,4 @@
+
 function addClass(element, value){
     var classNames, tempClass;
     classNames = value.split( /\s+/ ); // !! /\s+/查找多个空格， 分割成多个class
@@ -32,4 +33,15 @@ function removeClass(element, value){
         }
         element.className = tempClass.replace(/^\s+|\s+$/g, "");
     }
+}
+
+// 只能检测一个类
+function hasClass(element, value){
+    var formatClass, className;
+    formatClass = " " + element.className.replace(/[\r\t\n]/g, " ") + " ";
+    className = " " + value + " ";
+
+    if ( formatClass.indexOf(className) >= 0 )
+        return true;
+    return false;
 }
